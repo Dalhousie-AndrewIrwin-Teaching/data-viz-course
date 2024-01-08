@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-<meta name="author" content="Andrew Irwin, a.irwin@dal.ca">
-<meta name="dcterms.date" content="2022-10-20">
-<title>data-viz - Finding data</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-<style>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.450">
+
+  <meta name="author" content="Your name">
+  <meta name="dcterms.date" content="2024-01-08">
+  <title>data-viz - Write a title here</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,14 +96,12 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-<style type="text/css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -299,7 +298,7 @@
   }
 
   </style>
-<style type="text/css">
+  <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -310,7 +309,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -392,156 +390,116 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Finding data</h1>
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Write a title here</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Andrew Irwin, a.irwin@dal.ca 
+Your name 
 </div>
 </div>
 </div>
 
-  <p class="date">2022-10-20</p>
-</section><section id="plan" class="slide level2"><h2>Plan</h2>
+  <p class="date">2024-01-08</p>
+</section>
+<section>
+<section id="instructions" class="title-slide slide level1 center">
+<h1>Instructions</h1>
 <ul>
-<li><p>Finding data</p></li>
-<li><p>Reading data</p></li>
-<li><p>Checking data</p></li>
-<li><p>Subsetting data (filtering observations, selecting variables)</p></li>
-<li><p>Importance of metadata (source, units, how/why/when)</p></li>
-</ul></section><section id="where-to-get-data" class="slide level2"><h2>Where to get data?</h2>
-<ul>
-<li><p>R packages</p></li>
-<li><p>Websites: gapminder, Our World in Data, Tidy Tuesday</p></li>
-<li><p>Large repositories: Statistics Canada, OECD</p></li>
-<li><p>Specialized repositories: Many COVID data repositories</p></li>
-<li><p>Small collections made by individuals</p></li>
-<li><p>Government “Open data”</p></li>
-<li><p>Many, many, many more sources: google</p></li>
-</ul></section><section id="what-to-look-for" class="slide level2"><h2>What to look for?</h2>
-<ul>
-<li><p>Downloadable spreadsheets, comma separated variables files, text files</p></li>
-<li><p>R packages to download data</p></li>
-<li><p>GitHub repositories (and others: pangaea.de, osf.io, and many, many more)</p></li>
-<li><p>A license or terms and conditions of reuse and redistribution</p></li>
-</ul></section><section id="example-gapminder" class="slide level2"><h2>Example: gapminder</h2>
-
-<img data-src="static/L19/gapminder-web-01.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="example-gapminder-1" class="slide level2"><h2>Example: gapminder</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>electricity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"static/L19/electricity_use_per_person.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>electricity <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">filter</span>(<span class="fu">str_starts</span>(country, <span class="st">"[AM]"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="st">`</span><span class="at">2010</span><span class="st">`</span>, <span class="fu">fct_reorder</span>(country, <span class="st">`</span><span class="at">2010</span><span class="st">`</span>))) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Electricity use in 2010</span><span class="sc">\n</span><span class="st">(annual kWh per capita)"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> my_theme</span></code></pre></div>
-
-</div>
-<img data-src="19-finding-data_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section><section id="example-un" class="slide level2"><h2>Example: UN</h2>
-
-<img data-src="static/L19/un-data-01.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="example-un-1" class="slide level2"><h2>Example: UN</h2>
-
-<img data-src="static/L19/un-data-02.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="example-un-2" class="slide level2"><h2>Example: UN</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>forest_UN <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"static/L19/UNdata_Export_20210219_185253716.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>forest_UN <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2017</span>, Unit <span class="sc">==</span> <span class="st">"1000 ha"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>         <span class="fu">str_starts</span>(<span class="st">`</span><span class="at">Country or Area</span><span class="st">`</span>, <span class="st">"[BU]"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Value, <span class="at">y =</span> <span class="fu">fct_reorder</span>(<span class="st">`</span><span class="at">Country or Area</span><span class="st">`</span>, Value))) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Forest area (1000 ha)"</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> my_theme <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>))</span></code></pre></div>
-
-</div>
-<img data-src="19-finding-data_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section><section id="datapasta" class="slide level2"><h2>Datapasta</h2>
-
-<img data-src="static/L19/datapasta-01.png" style="width:60.0%" class="r-stretch quarto-figure-center"></section><section id="datapasta-1" class="slide level2"><h2>Datapasta</h2>
-<p>Addins &gt; Paste as data.frame</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">data.frame</span>(</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>             <span class="at">Prov. =</span> <span class="fu">c</span>(<span class="st">"Total"</span>,<span class="st">"BC"</span>,<span class="st">"ON"</span>,<span class="st">"QC"</span>,<span class="st">"AB"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                       <span class="st">"MB"</span>,<span class="st">"NB"</span>,<span class="st">"SK"</span>,<span class="st">"PEI"</span>,<span class="st">"NL"</span>,<span class="st">"NS"</span>,<span class="st">"YT"</span>,<span class="st">"NT"</span>,<span class="st">"NU"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>                       <span class="st">"\U0001f6a2"</span>),</span>
-<span id="cb3-6"><a href="#cb3-6"></a>   <span class="at">Total.Confirmed =</span> <span class="fu">c</span>(<span class="st">"839,451 (arrow_upward1,950)"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7"></a>                       <span class="st">"75,327"</span>,<span class="st">"290,771 (arrow_upward1,150)"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8"></a>                       <span class="st">"280,687 (arrow_upward800)"</span>,<span class="st">"130,030"</span>,<span class="st">"31,145"</span>,<span class="st">"1,411"</span>,<span class="st">"27,099"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9"></a>                       <span class="st">"114"</span>,<span class="st">"803"</span>,<span class="st">"1,602"</span>,<span class="st">"72"</span>,<span class="st">"47"</span>,<span class="st">"330"</span>,<span class="st">"13"</span>),</span>
-<span id="cb3-10"><a href="#cb3-10"></a>      <span class="at">Total.Deaths =</span> <span class="fu">c</span>(<span class="st">"21,559 (arrow_upward61)"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11"></a>                       <span class="st">"1,321"</span>,<span class="st">"6,820 ( arrow_upward 47)"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12"></a>                       <span class="st">"10,278 ( arrow_upward 14)"</span>,<span class="st">"1,805"</span>,<span class="st">"878"</span>,<span class="st">"24"</span>,<span class="st">"362"</span>,<span class="st">"0"</span>,<span class="st">"4"</span>,<span class="st">"65"</span>,<span class="st">"1"</span>,</span>
-<span id="cb3-13"><a href="#cb3-13"></a>                       <span class="st">"0"</span>,<span class="st">"1"</span>,<span class="st">"0"</span>),</span>
-<span id="cb3-14"><a href="#cb3-14"></a>   <span class="at">Total.Recovered =</span> <span class="fu">c</span>(<span class="st">"785,855 (arrow_upward2,439)"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15"></a>                       <span class="st">"69,602"</span>,<span class="st">"273,401 ( arrow_upward 1,255)"</span>,</span>
-<span id="cb3-16"><a href="#cb3-16"></a>                       <span class="st">"261,429 ( arrow_upward 1,184)"</span>,<span class="st">"123,338"</span>,<span class="st">"29,114"</span>,<span class="st">"1,275"</span>,<span class="st">"25,221"</span>,</span>
-<span id="cb3-17"><a href="#cb3-17"></a>                       <span class="st">"112"</span>,<span class="st">"416"</span>,<span class="st">"1,524"</span>,<span class="st">"69"</span>,<span class="st">"39"</span>,<span class="st">"302"</span>,<span class="st">"13"</span>),</span>
-<span id="cb3-18"><a href="#cb3-18"></a>      <span class="at">Total.Active =</span> <span class="fu">c</span>(<span class="st">"32,037 (-550)"</span>,<span class="st">"4,404"</span>,</span>
-<span id="cb3-19"><a href="#cb3-19"></a>                       <span class="st">"10,550 (-152)"</span>,<span class="st">"8,980 (-398)"</span>,<span class="st">"4,887"</span>,<span class="st">"1,153"</span>,<span class="st">"112"</span>,</span>
-<span id="cb3-20"><a href="#cb3-20"></a>                       <span class="st">"1,516"</span>,<span class="st">"2"</span>,<span class="st">"383"</span>,<span class="st">"13"</span>,<span class="st">"2"</span>,<span class="st">"8"</span>,<span class="st">"27"</span>,<span class="st">"0"</span>)</span>
-<span id="cb3-21"><a href="#cb3-21"></a>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Prov.             Total.Confirmed              Total.Deaths
-1  Total 839,451 (arrow_upward1,950)   21,559 (arrow_upward61)
-2     BC                      75,327                     1,321
-3     ON 290,771 (arrow_upward1,150)  6,820 ( arrow_upward 47)
-4     QC   280,687 (arrow_upward800) 10,278 ( arrow_upward 14)
-5     AB                     130,030                     1,805
-6     MB                      31,145                       878
-7     NB                       1,411                        24
-8     SK                      27,099                       362
-9    PEI                         114                         0
-10    NL                         803                         4
-11    NS                       1,602                        65
-12    YT                          72                         1
-13    NT                          47                         0
-14    NU                         330                         1
-15    🚢                          13                         0
-                 Total.Recovered  Total.Active
-1    785,855 (arrow_upward2,439) 32,037 (-550)
-2                         69,602         4,404
-3  273,401 ( arrow_upward 1,255) 10,550 (-152)
-4  261,429 ( arrow_upward 1,184)  8,980 (-398)
-5                        123,338         4,887
-6                         29,114         1,153
-7                          1,275           112
-8                         25,221         1,516
-9                            112             2
-10                           416           383
-11                         1,524            13
-12                            69             2
-13                            39             8
-14                           302            27
-15                            13             0</code></pre>
-</div>
-</div>
-</section><section id="summary" class="slide level2"><h2>Summary</h2>
-<ul>
-<li><p>Highlighted a few sources of data</p></li>
-<li><p>Easiest case is a <code>csv</code> format file</p></li>
-<li><p>Many R packages have data or have functions to retrieve data</p></li>
-<li><p>Always examine your data to be sure it was read and interpreted correctly</p></li>
-<li><p>Always look for metadata: units, how was data collected, who collected data, …</p></li>
-</ul></section><section id="further-reading" class="slide level2"><h2>Further reading</h2>
-<ul>
-<li><p>Course notes</p></li>
-<li><p><a href="https://r4ds.hadley.nz/import">Importing data</a> from R4DS</p></li>
-<li><p>Roger Peng’s notes on <a href="https://bookdown.org/rdpeng/rprogdatascience/getting-data-in-and-out-of-r.html">importing data</a></p></li>
-<li><p>An older but comprehensive guide to <a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html">importing data</a></p></li>
-</ul></section><section id="bonus-task" class="slide level2"><h2>Bonus Task</h2>
-<ul>
-<li>Find data online that you have not used before from a source in this lesson or anywhere else.</li>
-<li>Download the data to your computer.</li>
-<li>Read the data into R.</li>
-<li>Make a simple plot of the data.</li>
+<li>Modify this file to be a short collection of slides for a presentation</li>
+<li>Follow the instructions on the rest of the slides</li>
+<li>Delete this slide of instructions</li>
+<li>If you get stuck, review the <a href="https://quarto.org/docs/presentations/revealjs/">overview of making presentation slides</a></li>
 </ul>
+</section>
+<section id="headings" class="slide level2">
+<h2>Headings</h2>
+<p>Learn, by experimentation, the difference between a heading with one (<code>#</code>) or two (<code>##</code>) hash marks.</p>
+<p><strong>Describe the difference here.</strong></p>
+</section>
+<section id="images" class="slide level2">
+<h2>Images</h2>
+<p>Find a small graphic (photo, drawing, etc.). Add it to this repository. Make it appear on this slide.</p>
+<p>Follow the instructions <a href="https://quarto.org/docs/authoring/figures.html">here</a>.</p>
+<div class="footer">
+<p>Learn how to put an image in the <a href="https://quarto.org/docs/presentations/revealjs/#image-backgrounds">background</a>.</p>
+</div>
+</section></section>
+<section id="visualization" class="title-slide slide level1 smaller center">
+<h1>Visualization</h1>
+<p>Change the ggplot graphic here to something of your choosing.</p>
+<p>(You can create a new one, or use something from earlier in the course.)</p>
+<p>Create a caption for the figure.</p>
+
+<img data-src="task-L24-presentation_files/figure-revealjs/fig-one-1.png" width="864" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: A descriptive caption.</p></section>
+
+<section id="another-slide" class="title-slide slide level1 center" data-background-color="gray">
+<h1>Another slide</h1>
+<p>Set the background to black, or another color.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#color-backgrounds">Slide Backgrounds</a></p>
+</div>
+</section>
+
+<section>
+<section id="view-the-slides-in-a-browser" class="title-slide slide level1 center">
+<h1>View the slides in a browser</h1>
+<ul>
+<li>Click: Render.</li>
+<li>Open the slides in a web browser. (Click Present, or find the html file and open it.)</li>
+<li>Hit ? for help.</li>
+<li>Click on the menu in the lower left to see what options are available in presentation mode.</li>
+</ul>
+</section>
+<section id="two-columns" class="slide level2">
+<h2>Two columns</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Put an image or figure in this column</p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li>Write a sentence about the graphic here.</li>
+<li>Adjust the column widths to make good use of space.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="submit" class="slide level2">
+<h2>Submit</h2>
+<p>Do you want this Task to be graded? If yes, change <code>FALSE</code> to <code>TRUE</code> below:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>assess_task <span class="ot">=</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Learn how to show code and how to “fold” code <a href="https://quarto.org/docs/get-started/computations/rstudio.html#code-folding">here</a>.</p>
 
 <div class="footer footer-default">
 
 </div>
-</section>
-</div>
+</section></section>
+    </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -553,8 +511,7 @@ Andrew Irwin, a.irwin@dal.ca
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -591,7 +548,7 @@ Andrew Irwin, a.irwin@dal.ca
         respondToHashChanges: true,
 
         // Push each slide change to the browser history
-        history: false,
+        history: true,
 
         // Enable keyboard shortcuts for navigation
         keyboard: true,
@@ -725,7 +682,7 @@ Andrew Irwin, a.irwin@dal.ca
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -733,7 +690,9 @@ Andrew Irwin, a.irwin@dal.ca
           RevealZoom
         ]
       });
-    </script><script>
+    </script>
+    
+    <script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -768,7 +727,9 @@ Andrew Irwin, a.irwin@dal.ca
         }
 
       })();
-    </script><script id="quarto-html-after-body" type="application/javascript">
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -791,6 +752,58 @@ Andrew Irwin, a.irwin@dal.ca
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
       });
       function tippyHover(el, contentFn) {
         const config = {
@@ -862,6 +875,6 @@ Andrew Irwin, a.irwin@dal.ca
       }
     });
     </script>
-
+    
 
 </body></html>
