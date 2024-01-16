@@ -1,3 +1,5 @@
+**Course has moved to** https://AndrewIrwin.github.io/data-viz-course/
+
 This forms part of the STAT 2430 Data Vizualization course in Winter 2024 at Dalhousie University.
 
 This repository contains information for students registered in the course including the syllabus, lecture slides, and information about evaluation.
